@@ -198,7 +198,7 @@ export const translations = {
     hyperliquidWalletAddressDesc:
       'Wallet address corresponding to the private key',
     asterUserDesc:
-      'Main wallet address - The EVM wallet address you use to log in to Aster',
+      'Main wallet address - The EVM wallet address you use to log in to Aster (Note: Only EVM wallets are supported, Solana wallets are not supported)',
     asterSignerDesc:
       'API wallet address - Generate from https://www.asterdex.com/en/api-wallet',
     asterPrivateKeyDesc:
@@ -291,6 +291,12 @@ export const translations = {
     viewGuide: 'View Guide',
     binanceSetupGuide: 'Binance Setup Guide',
     closeGuide: 'Close',
+    whitelistIP: 'Whitelist IP',
+    whitelistIPDesc: 'Binance requires adding server IP to API whitelist',
+    serverIPAddresses: 'Server IP Addresses',
+    copyIP: 'Copy',
+    ipCopied: 'IP Copied',
+    loadingServerIP: 'Loading server IP...',
 
     // Error Messages
     createTraderFailed: 'Failed to create trader',
@@ -472,6 +478,21 @@ export const translations = {
     loginRegisterPrompt:
       'Please login or register to access the full AI trading platform',
     registerNewAccount: 'Register New Account',
+
+    // Candidate Coins Warnings
+    candidateCoins: 'Candidate Coins',
+    candidateCoinsZeroWarning: 'Candidate Coins Count is 0',
+    possibleReasons: 'Possible Reasons:',
+    coinPoolApiNotConfigured: 'Coin pool API not configured or inaccessible (check signal source settings)',
+    apiConnectionTimeout: 'API connection timeout or returned empty data',
+    noCustomCoinsAndApiFailed: 'No custom coins configured and API fetch failed',
+    solutions: 'Solutions:',
+    setCustomCoinsInConfig: 'Set custom coin list in trader configuration',
+    orConfigureCorrectApiUrl: 'Or configure correct coin pool API address',
+    orDisableCoinPoolOptions: 'Or disable "Use Coin Pool" and "Use OI Top" options',
+    signalSourceNotConfigured: 'Signal Source Not Configured',
+    signalSourceWarningMessage: 'You have traders that enabled "Use Coin Pool" or "Use OI Top", but signal source API address is not configured yet. This will cause candidate coins count to be 0, and traders cannot work properly.',
+    configureSignalSourceNow: 'Configure Signal Source Now',
   },
   zh: {
     // Header
@@ -667,7 +688,7 @@ export const translations = {
     hyperliquidPrivateKeyDesc: 'Hyperliquid 使用私钥进行交易认证',
     hyperliquidWalletAddressDesc: '与私钥对应的钱包地址',
     asterUserDesc:
-      '主钱包地址 - 您用于登录 Aster 的 EVM 钱包地址',
+      '主钱包地址 - 您用于登录 Aster 的 EVM 钱包地址（注意：仅支持 EVM 钱包，不支持 Solana 钱包）',
     asterSignerDesc:
       'API 钱包地址 - 从 https://www.asterdex.com/zh-CN/api-wallet 生成',
     asterPrivateKeyDesc:
@@ -743,6 +764,12 @@ export const translations = {
     viewGuide: '查看教程',
     binanceSetupGuide: '币安配置教程',
     closeGuide: '关闭',
+    whitelistIP: '白名单IP',
+    whitelistIPDesc: '币安交易所需要填写白名单IP',
+    serverIPAddresses: '服务器IP地址',
+    copyIP: '复制',
+    ipCopied: 'IP已复制',
+    loadingServerIP: '正在加载服务器IP...',
 
     // Error Messages
     createTraderFailed: '创建交易员失败',
@@ -908,6 +935,21 @@ export const translations = {
     accessNofxPlatform: '访问 NOFX 平台',
     loginRegisterPrompt: '请选择登录或注册以访问完整的 AI 交易平台',
     registerNewAccount: '注册新账号',
+
+    // Candidate Coins Warnings
+    candidateCoins: '候选币种',
+    candidateCoinsZeroWarning: '候选币种数量为 0',
+    possibleReasons: '可能原因：',
+    coinPoolApiNotConfigured: '币种池API未配置或无法访问（请检查信号源设置）',
+    apiConnectionTimeout: 'API连接超时或返回数据为空',
+    noCustomCoinsAndApiFailed: '未配置自定义币种且API获取失败',
+    solutions: '解决方案：',
+    setCustomCoinsInConfig: '在交易员配置中设置自定义币种列表',
+    orConfigureCorrectApiUrl: '或者配置正确的币种池API地址',
+    orDisableCoinPoolOptions: '或者禁用"使用币种池"和"使用OI Top"选项',
+    signalSourceNotConfigured: '信号源未配置',
+    signalSourceWarningMessage: '您有交易员启用了"使用币种池"或"使用OI Top"，但尚未配置信号源API地址。这将导致候选币种数量为0，交易员无法正常工作。',
+    configureSignalSourceNow: '立即配置信号源',
   },
 }
 
