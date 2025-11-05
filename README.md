@@ -3,12 +3,38 @@
 [![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://golang.org/)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?style=flat&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 [![Backed by Amber.ac](https://img.shields.io/badge/Backed%20by-Amber.ac-orange.svg)](https://amber.ac)
 
-**Languages:** [English](README.md) | [中文](README.zh-CN.md) | [Українська](README.uk.md) | [Русский](README.ru.md)
+**Languages:** [English](README.md) | [中文](docs/i18n/zh-CN/README.md) | [Українська](docs/i18n/uk/README.md) | [Русский](docs/i18n/ru/README.md)
 
 **Official Twitter:** [@nofx_ai](https://x.com/nofx_ai)
+
+**📚 Documentation:** [Docs Home](docs/README.md) | [Getting Started](docs/getting-started/README.md) | [Changelog](CHANGELOG.md) | [Contributing](CONTRIBUTING.md) | [Security](SECURITY.md)
+
+---
+
+## 📑 Table of Contents
+
+- [🚀 Universal AI Trading Operating System](#-universal-ai-trading-operating-system)
+- [👥 Developer Community](#-developer-community)
+- [🆕 What's New](#-whats-new-latest-update)
+- [📸 Screenshots](#-screenshots)
+- [✨ Current Implementation](#-current-implementation---crypto-markets)
+- [🔮 Roadmap](#-roadmap---universal-market-expansion)
+- [🏗️ Technical Architecture](#️-technical-architecture)
+- [💰 Register Binance Account](#-register-binance-account-save-on-fees)
+- [🚀 Quick Start](#-quick-start)
+- [📖 AI Decision Flow](#-ai-decision-flow)
+- [🧠 AI Self-Learning](#-ai-self-learning-example)
+- [📊 Web Interface Features](#-web-interface-features)
+- [🎛️ API Endpoints](#️-api-endpoints)
+- [⚠️ Important Risk Warnings](#️-important-risk-warnings)
+- [🛠️ Common Issues](#️-common-issues)
+- [📈 Performance Tips](#-performance-optimization-tips)
+- [🔄 Changelog](#-changelog)
+- [📄 License](#-license)
+- [🤝 Contributing](#-contributing)
 
 ---
 
@@ -98,11 +124,12 @@ A Binance-compatible decentralized perpetual futures exchange!
 - 🌐 **Multi-chain support** - trade on your preferred EVM chain
 
 **Quick Start:**
-1. Visit [Aster API Wallet](https://www.asterdex.com/en/api-wallet)
-2. Connect your main wallet and create an API wallet
-3. Copy the API Signer address and Private Key
-4. ~~Set `"exchange": "aster"` in config.json~~ *Configure through web interface*
-5. Add `"aster_user"`, `"aster_signer"`, and `"aster_private_key"`
+1. Register via [Aster Referral Link](https://www.asterdex.com/en/referral/fdfc0e) (get fee discounts!)
+2. Visit [Aster API Wallet](https://www.asterdex.com/en/api-wallet)
+3. Connect your main wallet and create an API wallet
+4. Copy the API Signer address and Private Key
+5. Set `"exchange": "aster"` in config.json
+6. Add `"aster_user"`, `"aster_signer"`, and `"aster_private_key"`
 
 ---
 
@@ -168,78 +195,50 @@ NOFX is currently **fully operational in cryptocurrency markets** with the follo
 
 ## 🔮 Roadmap - Universal Market Expansion
 
-Our proven crypto infrastructure is being extended to:
+NOFX is on a mission to become the **Universal AI Trading Operating System** for all financial markets.
 
-- **📈 Stock Markets**: US equities, A-shares, Hong Kong stocks
-- **📊 Futures Markets**: Commodity futures, index futures
-- **🎯 Options Trading**: Equity options, crypto options
-- **💱 Forex Markets**: Major currency pairs, cross rates
+**Vision:** Same architecture. Same agent framework. All markets.
 
-**Same architecture. Same agent framework. All markets.**
+**Expansion Markets:**
+- 📈 **Stock Markets**: US equities, A-shares, Hong Kong stocks
+- 📊 **Futures Markets**: Commodity futures, index futures
+- 🎯 **Options Trading**: Equity options, crypto options
+- 💱 **Forex Markets**: Major currency pairs, cross rates
+
+**Upcoming Features:**
+- Enhanced AI capabilities (GPT-4, Claude 3, Gemini Pro, flexible prompt templates)
+- New exchange integrations (OKX, Bybit, Lighter, EdgeX + CEX/Perp-DEX)
+- Project structure refactoring (high cohesion, low coupling, SOLID principles)
+- Security enhancements (AES-256 encryption for API keys, RBAC, 2FA improvements)
+- User experience improvements (mobile-responsive, TradingView charts, alert system)
+
+📖 **For detailed roadmap and timeline, see:**
+- **English:** [Roadmap Documentation](docs/roadmap/README.md)
+- **中文:** [路线图文档](docs/roadmap/README.zh-CN.md)
 
 ---
 
 ## 🏗️ Technical Architecture
 
-```
-nofx/
-├── main.go                          # Program entry (multi-trader manager)
-├── config.json                      # Configuration file (API keys, ~~multi-trader config~~) (Trader config via web interface)
-│
-├── api/                            # HTTP API service
-│   └── server.go                   # Gin framework, RESTful API
-│
-├── trader/                         # Trading core
-│   ├── auto_trader.go              # Auto trading main controller (single trader)
-│   └── binance_futures.go          # Binance futures API wrapper
-│
-├── manager/                        # Multi-trader management
-│   └── trader_manager.go           # Manages multiple trader instances
-│
-├── mcp/                            # Model Context Protocol - AI communication
-│   └── client.go                   # AI API client (DeepSeek/Qwen integration)
-│
-├── decision/                       # AI decision engine
-│   └── engine.go                   # Decision logic with historical feedback
-│
-├── market/                         # Market data fetching
-│   └── data.go                     # Market data & technical indicators (K-line, RSI, MACD)
-│
-├── pool/                           # Coin pool management
-│   └── coin_pool.go                # AI500 + OI Top merged pool
-│
-├── logger/                         # Logging system
-│   └── decision_logger.go          # Decision recording + performance analysis
-│
-├── decision_logs/                  # Decision log storage
-│   ├── qwen_trader/                # Qwen trader logs
-│   └── deepseek_trader/            # DeepSeek trader logs
-│
-└── web/                            # React frontend
-    ├── src/
-    │   ├── components/             # React components
-    │   │   ├── EquityChart.tsx     # Equity curve chart
-    │   │   ├── ComparisonChart.tsx # Multi-AI comparison chart
-    │   │   └── CompetitionPage.tsx # Competition leaderboard
-    │   ├── lib/api.ts              # API call wrapper
-    │   ├── types/index.ts          # TypeScript types
-    │   ├── index.css               # Binance-style CSS
-    │   └── App.tsx                 # Main app
-    └── package.json
-```
+NOFX is built with a modern, modular architecture:
 
-### Core Dependencies
+- **Backend:** Go with Gin framework, SQLite database
+- **Frontend:** React 18 + TypeScript + Vite + TailwindCSS
+- **Multi-Exchange Support:** Binance, Hyperliquid, Aster DEX
+- **AI Integration:** DeepSeek, Qwen, and custom OpenAI-compatible APIs
+- **State Management:** Zustand for frontend, database-driven for backend
+- **Real-time Updates:** SWR with 5-10s polling intervals
 
-**Backend (Go)**
-- `github.com/adshao/go-binance/v2` - Binance API client
-- `github.com/markcheno/go-talib` - Technical indicator calculation (TA-Lib)
-- `github.com/gin-gonic/gin` - HTTP API framework
+**Key Features:**
+- 🗄️ Database-driven configuration (no more JSON editing)
+- 🔐 JWT authentication with optional 2FA support
+- 📊 Real-time performance tracking and analytics
+- 🤖 Multi-AI competition mode with live comparison
+- 🔌 RESTful API for all configuration and monitoring
 
-**Frontend (React + TypeScript)**
-- `react` + `react-dom` - UI framework
-- `recharts` - Chart library (equity curve, comparison charts)
-- `swr` - Data fetching and caching
-- `tailwindcss` - CSS framework
+📖 **For detailed architecture documentation, see:**
+- **English:** [Architecture Documentation](docs/architecture/README.md)
+- **中文:** [架构文档](docs/architecture/README.zh-CN.md)
 
 ---
 
@@ -282,7 +281,7 @@ Docker automatically handles all dependencies (Go, Node.js, TA-Lib, SQLite) and 
 #### Step 1: Prepare Configuration
 ```bash
 # Copy configuration template
-cp config.example.jsonc config.json
+cp config.json.example config.json
 
 # Edit and fill in your API keys
 nano config.json  # or use any editor
@@ -326,8 +325,8 @@ Open your browser and visit: **http://localhost:3000**
 ```
 
 **📖 For detailed Docker deployment guide, troubleshooting, and advanced configuration:**
-- **English**: See [DOCKER_DEPLOY.en.md](DOCKER_DEPLOY.en.md)
-- **中文**: 查看 [DOCKER_DEPLOY.md](DOCKER_DEPLOY.md)
+- **English**: See [docs/getting-started/docker-deploy.en.md](docs/getting-started/docker-deploy.en.md)
+- **中文**: 查看 [docs/getting-started/docker-deploy.zh-CN.md](docs/getting-started/docker-deploy.zh-CN.md)
 
 ---
 
@@ -408,7 +407,7 @@ Before configuring the system, you need to obtain AI API keys. Choose one of the
 
 **How to get Qwen API Key:**
 
-1. **Visit**: [https://dashscope.aliyuncs.com](https://dashscope.aliyuncs.com)
+1. **Visit**: [https://dashscope.console.aliyun.com](https://dashscope.console.aliyun.com)
 2. **Register**: Sign up with Alibaba Cloud account
 3. **Enable Service**: Activate DashScope service
 4. **Create API Key**:
@@ -436,7 +435,7 @@ go build -o nofx
 
 ```
 ╔════════════════════════════════════════════════════════════╗
-║    🤖 AI多模型交易系统 - 支持 DeepSeek & Qwen            ║
+║    🤖 AI多模型交易系统 - 支持 DeepSeek & Qwen                  ║
 ╚════════════════════════════════════════════════════════════╝
 
 🤖 数据库中的AI交易员配置:
@@ -545,12 +544,13 @@ Open your browser and visit: **🌐 http://localhost:3000**
 - 🌐 Multi-chain support (ETH, BSC, Polygon)
 - 🌍 No KYC required
 
-**Step 1**: Create Aster API Wallet
+**Step 1**: Register and Create Aster API Wallet
 
-1. Visit [Aster API Wallet](https://www.asterdex.com/en/api-wallet)
-2. Connect your main wallet (MetaMask, WalletConnect, etc.)
-3. Click "Create API Wallet"
-4. **Save these 3 items immediately:**
+1. Register via [Aster Referral Link](https://www.asterdex.com/en/referral/fdfc0e) (get fee discounts!)
+2. Visit [Aster API Wallet](https://www.asterdex.com/en/api-wallet)
+3. Connect your main wallet (MetaMask, WalletConnect, etc.)
+4. Click "Create API Wallet"
+5. **Save these 3 items immediately:**
    - Main Wallet address (User)
    - API Wallet address (Signer)
    - API Wallet Private Key (⚠️ shown only once!)
@@ -567,9 +567,9 @@ Open your browser and visit: **🌐 http://localhost:3000**
       "ai_model": "deepseek",
       "exchange": "aster",
 
-      "aster_user": "0x63DD5aCC6b1aa0f563956C0e534DD30B6dcF7C4e",
-      "aster_signer": "0x21cF8Ae13Bb72632562c6Fff438652Ba1a151bb0",
-      "aster_private_key": "4fd0a42218f3eae43a6ce26d22544e986139a01e5b34a62db53757ffca81bae1",
+      "aster_user": "0xYOUR_MAIN_WALLET_ADDRESS_HERE",
+      "aster_signer": "0xYOUR_API_WALLET_SIGNER_ADDRESS_HERE",
+      "aster_private_key": "your_api_wallet_private_key_without_0x_prefix",
 
       "deepseek_key": "sk-xxxxxxxxxxxxx",
       "initial_balance": 1000.0,
@@ -688,12 +688,12 @@ The leverage settings control the maximum leverage the AI can use for each trade
 
 ~~**Configuration format:**~~
 
-~~```json
+```json
 "leverage": {
   "btc_eth_leverage": 5,    // Maximum leverage for BTC and ETH
   "altcoin_leverage": 5      // Maximum leverage for all other coins
 }
-```~~
+```
 
 *Note: Leverage is now configured through the web interface*
 
@@ -715,20 +715,20 @@ The leverage settings control the maximum leverage the AI can use for each trade
 **Examples:**
 
 ~~**Safe configuration (subaccount or conservative):**~~
-~~```json
+```json
 "leverage": {
   "btc_eth_leverage": 5,
   "altcoin_leverage": 5
 }
-```~~
+```
 
 ~~**Aggressive configuration (main account only):**~~
-~~```json
+```json
 "leverage": {
   "btc_eth_leverage": 20,
   "altcoin_leverage": 15
 }
-```~~
+```
 
 *Note: Leverage configuration is now done through the web interface*
 
@@ -915,109 +915,100 @@ Should return: `{"status":"ok"}`
 
 Each decision cycle (default 3 minutes), the system executes the following intelligent process:
 
-```
-┌──────────────────────────────────────────────────────────┐
-│ 1. 📊 Analyze Historical Performance (last 20 cycles)    │
-├──────────────────────────────────────────────────────────┤
-│  ✓ Calculate overall win rate, avg profit, P/L ratio    │
-│  ✓ Per-coin statistics (win rate, avg P/L in USDT)      │
-│  ✓ Identify best/worst performing coins                 │
-│  ✓ List last 5 trade details with accurate PnL          │
-│  ✓ Calculate Sharpe ratio for risk-adjusted performance │
-│  📌 NEW (v2.0.2): Accurate USDT PnL with leverage       │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│ 2. 💰 Get Account Status                                 │
-├──────────────────────────────────────────────────────────┤
-│  • Total equity & available balance                      │
-│  • Number of open positions & unrealized P/L            │
-│  • Margin usage rate (AI manages up to 90%)             │
-│  • Daily P/L tracking & drawdown monitoring             │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│ 3. 🔍 Analyze Existing Positions (if any)                │
-├──────────────────────────────────────────────────────────┤
-│  • For each position, fetch latest market data          │
-│  • Calculate real-time technical indicators:            │
-│    - 3min K-line: RSI(7), MACD, EMA20                   │
-│    - 4hour K-line: RSI(14), EMA20/50, ATR               │
-│  • Track position holding duration (e.g., "2h 15min")   │
-│    📌 NEW (v2.0.2): Shows how long each position held   │
-│  • Display: Entry price, current price, P/L%, duration  │
-│  • AI evaluates: Should hold or close?                  │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│ 4. 🎯 Evaluate New Opportunities (candidate coins)       │
-├──────────────────────────────────────────────────────────┤
-│  • Fetch coin pool (2 modes):                           │
-│    🌟 Default Mode: BTC, ETH, SOL, BNB, XRP, etc.       │
-│    ⚙️  Advanced Mode: AI500 (top 20) + OI Top (top 20) │
-│  • Merge & deduplicate candidate coins                  │
-│  • Filter: Remove low liquidity (<15M USD OI value)     │
-│  • Batch fetch market data + technical indicators       │
-│  • Calculate volatility, trend strength, volume surge   │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│ 5. 🧠 AI Comprehensive Decision (DeepSeek/Qwen)          │
-├──────────────────────────────────────────────────────────┤
-│  • Review historical feedback:                          │
-│    - Recent win rate & profit factor                    │
-│    - Best/worst coins performance                       │
-│    - Avoid repeating mistakes                           │
-│  • Analyze all raw sequence data:                       │
-│    - 3min price序列, 4hour K-line序列                     │
-│    - Complete indicator sequences (not just latest)     │
-│    📌 NEW (v2.0.2): AI has full freedom to analyze     │
-│  • Chain of Thought (CoT) reasoning process             │
-│  • Output structured decisions:                         │
-│    - Action: close_long/close_short/open_long/open_short│
-│    - Coin symbol, quantity, leverage                    │
-│    - Stop-loss & take-profit levels (≥1:2 ratio)        │
-│  • Decision: Wait/Hold/Close/Open                       │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│ 6. ⚡ Execute Trades                                      │
-├──────────────────────────────────────────────────────────┤
-│  • Priority order: Close existing → Then open new       │
-│  • Risk checks before execution:                        │
-│    - Position size limits (1.5x for altcoins, 10x BTC) │
-│    - No duplicate positions (same coin + direction)     │
-│    - Margin usage within 90% limit                      │
-│  • Auto-fetch & apply Binance LOT_SIZE precision        │
-│  • Execute orders via Binance Futures API               │
-│  • After closing: Auto-cancel all pending orders        │
-│  • Record actual execution price & order ID             │
-│  📌 Track position open time for duration calculation   │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│ 7. 📝 Record Complete Logs & Update Performance          │
-├──────────────────────────────────────────────────────────┤
-│  • Save decision log to decision_logs/{trader_id}/      │
-│  • Log includes:                                        │
-│    - Complete Chain of Thought (CoT)                    │
-│    - Input prompt with all market data                  │
-│    - Structured decision JSON                           │
-│    - Account snapshot (balance, positions, margin)      │
-│    - Execution results (success/failure, prices)        │
-│  • Update performance database:                         │
-│    - Match open/close pairs by symbol_side key          │
-│      📌 NEW: Prevents long/short conflicts             │
-│    - Calculate accurate USDT PnL:                       │
-│      PnL = Position Value × Price Δ% × Leverage         │
-│      📌 NEW: Considers quantity + leverage              │
-│    - Store: quantity, leverage, open time, close time   │
-│    - Update win rate, profit factor, Sharpe ratio       │
-│  • Performance data feeds back into next cycle          │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-                    (Repeat every 3-5 min)
-```
+### Step 1: 📊 Analyze Historical Performance (last 20 cycles)
+- ✓ Calculate overall win rate, avg profit, P/L ratio
+- ✓ Per-coin statistics (win rate, avg P/L in USDT)
+- ✓ Identify best/worst performing coins
+- ✓ List last 5 trade details with accurate PnL
+- ✓ Calculate Sharpe ratio for risk-adjusted performance
+- 📌 **NEW (v2.0.2)**: Accurate USDT PnL with leverage
+
+**↓**
+
+### Step 2: 💰 Get Account Status
+- Total equity & available balance
+- Number of open positions & unrealized P/L
+- Margin usage rate (AI manages up to 90%)
+- Daily P/L tracking & drawdown monitoring
+
+**↓**
+
+### Step 3: 🔍 Analyze Existing Positions (if any)
+- For each position, fetch latest market data
+- Calculate real-time technical indicators:
+  - 3min K-line: RSI(7), MACD, EMA20
+  - 4hour K-line: RSI(14), EMA20/50, ATR
+- Track position holding duration (e.g., "2h 15min")
+- 📌 **NEW (v2.0.2)**: Shows how long each position held
+- Display: Entry price, current price, P/L%, duration
+- AI evaluates: Should hold or close?
+
+**↓**
+
+### Step 4: 🎯 Evaluate New Opportunities (candidate coins)
+- Fetch coin pool (2 modes):
+  - 🌟 **Default Mode**: BTC, ETH, SOL, BNB, XRP, etc.
+  - ⚙️ **Advanced Mode**: AI500 (top 20) + OI Top (top 20)
+- Merge & deduplicate candidate coins
+- Filter: Remove low liquidity (<15M USD OI value)
+- Batch fetch market data + technical indicators
+- Calculate volatility, trend strength, volume surge
+
+**↓**
+
+### Step 5: 🧠 AI Comprehensive Decision (DeepSeek/Qwen)
+- Review historical feedback:
+  - Recent win rate & profit factor
+  - Best/worst coins performance
+  - Avoid repeating mistakes
+- Analyze all raw sequence data:
+  - 3min price sequences, 4hour K-line sequences
+  - Complete indicator sequences (not just latest)
+  - 📌 **NEW (v2.0.2)**: AI has full freedom to analyze
+- Chain of Thought (CoT) reasoning process
+- Output structured decisions:
+  - Action: `close_long` / `close_short` / `open_long` / `open_short`
+  - Coin symbol, quantity, leverage
+  - Stop-loss & take-profit levels (≥1:2 ratio)
+- Decision: Wait / Hold / Close / Open
+
+**↓**
+
+### Step 6: ⚡ Execute Trades
+- Priority order: Close existing → Then open new
+- Risk checks before execution:
+  - Position size limits (1.5x for altcoins, 10x BTC)
+  - No duplicate positions (same coin + direction)
+  - Margin usage within 90% limit
+- Auto-fetch & apply Binance LOT_SIZE precision
+- Execute orders via Binance Futures API
+- After closing: Auto-cancel all pending orders
+- Record actual execution price & order ID
+- 📌 Track position open time for duration calculation
+
+**↓**
+
+### Step 7: 📝 Record Complete Logs & Update Performance
+- Save decision log to `decision_logs/{trader_id}/`
+- Log includes:
+  - Complete Chain of Thought (CoT)
+  - Input prompt with all market data
+  - Structured decision JSON
+  - Account snapshot (balance, positions, margin)
+  - Execution results (success/failure, prices)
+- Update performance database:
+  - Match open/close pairs by `symbol_side` key
+  - 📌 **NEW**: Prevents long/short conflicts
+  - Calculate accurate USDT PnL:
+    - `PnL = Position Value × Price Δ% × Leverage`
+  - 📌 **NEW**: Considers quantity + leverage
+  - Store: quantity, leverage, open time, close time
+  - Update win rate, profit factor, Sharpe ratio
+- Performance data feeds back into next cycle
+
+**↓**
+
+**🔄 (Repeat every 3-5 min)**
 
 ### Key Improvements in v2.0.2
 
@@ -1179,6 +1170,8 @@ GET /api/health                   # Health check
 
 ## 🛠️ Common Issues
 
+> 📖 **For detailed troubleshooting:** See the comprehensive [Troubleshooting Guide](docs/guides/TROUBLESHOOTING.md) ([中文版](docs/guides/TROUBLESHOOTING.zh-CN.md))
+
 ### 1. Compilation error: TA-Lib not found
 
 **Solution**: Install TA-Lib library
@@ -1229,160 +1222,46 @@ sudo apt-get install libta-lib0-dev
 
 ## 🔄 Changelog
 
-### v3.0.0 (2025-10-30) - Major Architecture Transformation
+📖 **For detailed version history and updates, see:**
 
-**🚀 Complete System Redesign - Web-Based Configuration Platform**
+- **English:** [CHANGELOG.md](CHANGELOG.md)
+- **中文:** [CHANGELOG.zh-CN.md](CHANGELOG.zh-CN.md)
 
-This is a **major breaking update** that completely transforms NOFX from a static config-based system to a modern web-based trading platform.
+**Latest Release:** v3.0.0 (2025-10-30) - Major Architecture Transformation
 
-**Revolutionary Changes:**
-
-**1. Database-Driven Architecture**
-- ✅ **SQLite Integration**: Replaced static JSON config with SQLite database
-- ✅ **Persistent Storage**: All configurations stored in database with automatic timestamps
-- ✅ **Data Integrity**: Foreign key relationships and triggers for data consistency
-- ✅ **Schema Design**: Separate tables for AI models, exchanges, traders, and system config
-
-**2. Web-Based Configuration Interface**  
-- ✅ **No More JSON Editing**: Complete web-based configuration management
-- ✅ **AI Model Setup**: Configure DeepSeek/Qwen API keys through web interface
-- ✅ **Exchange Management**: Set up Binance/Hyperliquid credentials independently
-- ✅ **Dynamic Trader Creation**: Create traders by combining any AI model with any exchange
-- ✅ **Real-Time Control**: Start/stop traders without system restart
-
-**3. Flexible Architecture**
-- ✅ **Separation of Concerns**: AI models and exchanges configured independently
-- ✅ **Mix & Match**: Create unlimited combinations (e.g., Qwen + Binance, DeepSeek + Hyperliquid)
-- ✅ **Scalable Design**: Support for unlimited traders and configurations
-- ✅ **Clean Slate**: No default traders - create only what you need
-
-**4. Enhanced API Layer**
-- ✅ **RESTful Design**: Complete CRUD operations for all configuration entities
-- ✅ **New Endpoints**: 
-  - `GET/PUT /api/models` - AI model configuration
-  - `GET/PUT /api/exchanges` - Exchange configuration
-  - `POST/DELETE /api/traders` - Trader management
-  - `POST /api/traders/:id/start|stop` - Trader control
-- ✅ **Updated Documentation**: All API endpoints documented
-
-**5. Modernized Codebase**
-- ✅ **Type Safety**: Proper separation of legacy and new configuration types
-- ✅ **Database Abstraction**: Clean database layer with prepared statements
-- ✅ **Error Handling**: Comprehensive error handling and validation
-- ✅ **Code Organization**: Better separation between database, API, and business logic
-
-**Migration Notes:**
-- ⚠️ **Breaking Change**: Old ~~`config.json`~~ files are no longer used
-- ⚠️ **Fresh Start**: All configurations must be redone through web interface
-- ✅ **Easier Setup**: Web-based configuration is much more user-friendly
-- ✅ **Better UX**: No more server restarts for configuration changes
-
-**Why This Update Matters:**
-- 🎯 **User Experience**: Much easier to configure and manage
-- 🔧 **Flexibility**: Create any combination of AI models and exchanges
-- 📊 **Scalability**: Support for complex multi-trader setups
-- 🔒 **Reliability**: Database ensures data persistence and consistency
-- 🚀 **Future-Proof**: Foundation for advanced features like trader templates, backtesting, etc.
-
-### v2.0.2 (2025-10-29)
-
-**Critical Bug Fixes - Trade History & Performance Analysis:**
-
-This version fixes **critical calculation errors** in the historical trade record and performance analysis system that significantly affected profitability statistics.
-
-**1. PnL Calculation - Major Error Fixed** (logger/decision_logger.go)
-- **Problem**: Previously calculated PnL as percentage only, completely ignoring position size and leverage
-  - Example: 100 USDT position earning 5% and 1000 USDT position earning 5% both showed `5.0` as profit
-  - This made performance analysis completely inaccurate
-- **Solution**: Now calculates actual USDT profit amount
-  ```
-  PnL (USDT) = Position Value × Price Change % × Leverage
-  Example: 1000 USDT × 5% × 20x = 1000 USDT actual profit
-  ```
-- **Impact**: Win rate, profit factor, and Sharpe ratio now based on accurate USDT amounts
-
-**2. Position Tracking - Missing Critical Data**
-- **Problem**: Open position records only stored price and time, missing quantity and leverage
-- **Solution**: Now stores complete trade data:
-  - `quantity`: Position size (in coins)
-  - `leverage`: Leverage multiplier (e.g., 20x)
-  - These are essential for accurate PnL calculations
-
-**3. Position Key Logic - Long/Short Conflict**
-- **Problem**: Used `symbol` as position key, causing data conflicts when holding both long and short
-  - Example: BTCUSDT long and BTCUSDT short would overwrite each other
-- **Solution**: Changed to `symbol_side` format (e.g., `BTCUSDT_long`, `BTCUSDT_short`)
-  - Now properly distinguishes between long and short positions
-
-**4. Sharpe Ratio Calculation - Code Optimization**
-- **Problem**: Used custom Newton's method for square root calculation
-- **Solution**: Replaced with standard library `math.Sqrt`
-  - More reliable, maintainable, and efficient
-
-**Why This Update Matters:**
-- ✅ Historical trade statistics now show **real USDT profit/loss** instead of meaningless percentages
-- ✅ Performance comparison between different leverage trades is now accurate
-- ✅ AI self-learning mechanism receives correct historical feedback
-- ✅ Profit factor and Sharpe ratio calculations are now meaningful
-- ✅ Multi-position tracking (long + short simultaneously) works correctly
-
-**Recommendation**: If you were running the system before this update, your historical statistics were inaccurate. After updating to v2.0.2, new trades will be calculated correctly.
-
-### v2.0.2 (2025-10-29)
-
-**Bug Fixes:**
-- ✅ Fixed Aster exchange precision error (code -1111: "Precision is over the maximum defined for this asset")
-- ✅ Improved price and quantity formatting to match exchange precision requirements
-- ✅ Added detailed precision processing logs for debugging
-- ✅ Enhanced all order functions (OpenLong, OpenShort, CloseLong, CloseShort, SetStopLoss, SetTakeProfit) with proper precision handling
-
-**Technical Details:**
-- Added `formatFloatWithPrecision` function to convert float64 to strings with correct precision
-- Price and quantity parameters are now formatted according to exchange's `pricePrecision` and `quantityPrecision` specifications
-- Trailing zeros are removed from formatted values to optimize API requests
-
-### v2.0.1 (2025-10-29)
-
-**Bug Fixes:**
-- ✅ Fixed ComparisonChart data processing logic - switched from cycle_number to timestamp grouping
-- ✅ Resolved chart freezing issue when backend restarts and cycle_number resets
-- ✅ Improved chart data display - now shows all historical data points chronologically
-- ✅ Enhanced debugging logs for better troubleshooting
-
-### v2.0.0 (2025-10-28)
-
-**Major Updates:**
-- ✅ AI self-learning mechanism (historical feedback, performance analysis)
-- ✅ Multi-trader competition mode (Qwen vs DeepSeek)
-- ✅ Binance-style UI (complete Binance interface imitation)
-- ✅ Performance comparison charts (real-time ROI comparison)
-- ✅ Risk control optimization (per-coin position limit adjustment)
-
-**Bug Fixes:**
-- Fixed hardcoded initial balance issue
-- Fixed multi-trader data sync issue
-- Optimized chart data alignment (using cycle_number)
-
-### v1.0.0 (2025-10-27)
-- Initial release
-- Basic AI trading functionality
-- Decision logging system
-- Simple Web interface
+**Recent Highlights:**
+- 🚀 Complete system redesign with web-based configuration
+- 🗄️ Database-driven architecture (SQLite)
+- 🎨 No more JSON editing - all configuration through web interface
+- 🔧 Mix & match AI models with any exchange
+- 📊 Enhanced API layer with comprehensive endpoints
 
 ---
 
 ## 📄 License
 
-MIT License - See [LICENSE](LICENSE) file for details
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)** - See [LICENSE](LICENSE) file for details.
+
+**What this means:**
+- ✅ You can use, modify, and distribute this software
+- ✅ You must disclose source code of your modifications
+- ✅ If you run a modified version on a server, you must make the source code available to users
+- ✅ All derivatives must also be licensed under AGPL-3.0
+
+For commercial licensing or questions, please contact the maintainers.
 
 ---
 
 ## 🤝 Contributing
 
-Issues and Pull Requests are welcome!
+We welcome contributions from the community! See our comprehensive guides:
 
-### Development Guide
+- **📖 [Contributing Guide](CONTRIBUTING.md)** - Complete development workflow, code standards, and PR process
+- **🤝 [Code of Conduct](CODE_OF_CONDUCT.md)** - Community guidelines and standards
+- **💰 [Bounty Program](docs/community/bounty-guide.md)** - Earn rewards for contributions
+- **🔒 [Security Policy](SECURITY.md)** - Report vulnerabilities responsibly
 
+**Quick Start:**
 1. Fork the project
 2. Create feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
@@ -1404,7 +1283,7 @@ Issues and Pull Requests are welcome!
 
 - [Binance API](https://binance-docs.github.io/apidocs/futures/en/) - Binance Futures API
 - [DeepSeek](https://platform.deepseek.com/) - DeepSeek AI API
-- [Qwen](https://dashscope.aliyuncs.com/) - Alibaba Cloud Qwen
+- [Qwen](https://dashscope.console.aliyun.com/) - Alibaba Cloud Qwen
 - [TA-Lib](https://ta-lib.org/) - Technical indicator library
 - [Recharts](https://recharts.org/) - React chart library
 
